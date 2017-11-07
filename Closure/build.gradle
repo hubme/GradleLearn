@@ -26,3 +26,9 @@ def mulParamsClosure = {
 	str, n -> println "$str --- $n"
 }
 mulParamsClosure("VanceKing", 1024)
+
+def var = "Hello World!"
+def useVar = {
+	println var
+}
+useVar()
