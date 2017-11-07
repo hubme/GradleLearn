@@ -1,0 +1,28 @@
+/*
+Closure(闭包)是一段单独的代码块，它可以接收参数，返回值，也可以被赋值给变量。
+*/
+
+
+// 定义闭包, 无参数
+def nonParamsClosure = {
+	println "Hello Gradle!"
+}
+//执行闭包
+nonParamsClosure()
+
+//接收一个参数 str
+def singleParamClosure = {
+	String str -> println str
+}
+singleParamClosure("VanceKing")
+//如果只有一个参数可以用it代替
+def singleParamClosure2 = {
+	println it
+}
+singleParamClosure2("hai")
+
+//接收多个参数
+def mulParamsClosure = {
+	str, n -> println "$str --- $n"
+}
+mulParamsClosure("VanceKing", 1024)
