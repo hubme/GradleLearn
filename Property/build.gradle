@@ -1,0 +1,19 @@
+//Gradle在默认情况下已经为Project定义了很多Property
+task showDefautProperty {
+	println "project---"+project			//Project本身
+	println "name---"+project.name			//Project的名字
+	println "path---"+project.path			//Project的绝对路径
+	println "description---"+project.description	//Project的描述信息
+	println "buildDir---"+project.buildDir			//Project构建结果存放目录
+	println "version---"+project.version			//Project的版本号
+}
+
+ext.customProperty1 = "this is a custom property."
+ext {
+	customProperty2 = "this is my second cusomt property."
+}
+
+task showCustomProperty {
+	println customProperty1
+	println customProperty2
+}
