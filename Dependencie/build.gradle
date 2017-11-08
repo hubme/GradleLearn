@@ -1,0 +1,22 @@
+//http://wiki.jikexueyuan.com/project/gradle-2-user-guide/using-the-gradle-command-line.html
+
+task compile << {
+    println 'compiling source'
+}
+
+task compileTest(dependsOn: compile) << {
+    println 'compiling unit tests'
+}
+
+task test(dependsOn: [compile, compileTest]) << {
+    println 'running unit tests'
+}
+
+task dist(dependsOn: [compile, test]) << {
+    println 'building the distribution'
+}
+
+//1.执行 gradle dist test.每个任务只会执行一次。
+//2.剔除某个任务(-x) gradle dist -x test。
+//3.发生故障时继续构建
+//4.任务名称缩写，只需提供足够的可以唯一区分出该 task 的字符即可. gradle compileTest 同 gradle cT。
