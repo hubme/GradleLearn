@@ -8,12 +8,13 @@ task showDefautProperty {
 	println "version---"+project.version			//Project的版本号
 }
 
+//扩展属性
 ext.customProperty1 = "this is a custom property."
 ext {
 	customProperty2 = "this is my second cusomt property."
 }
 
 task showCustomProperty {
-	println customProperty1
-	println customProperty2
+	println "custom property: $customProperty1"
+	println "second custom property: $customProperty2"
 }
