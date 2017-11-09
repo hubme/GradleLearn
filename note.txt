@@ -1,0 +1,3 @@
+任务名称缩写，只需提供足够的可以唯一区分出该 task 的字符即可. gradle compileTest 同 gradle cT。
+选择要执行的构建 gradle -q -b ..\Closure\build.gradle
+gradle projects 会为你列出选中项目的子项目列表

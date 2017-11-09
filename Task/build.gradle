@@ -1,0 +1,30 @@
+task printVersion {
+    doFirst{
+        println "all first task"
+    }
+    doLast{
+        println "all last task"
+    }
+}
+
+task EmptyTask {
+	description = 'Build Empty Task'
+    group = 'build'
+}
+
+task MyTask {
+	println "MyTask"
+
+	description = 'Build My Task'
+    group = 'build'
+}
+
+def chant() {
+    ant.echo(message: 'Repeat after me...')
+}
+
+chant()
+
+//1. gradle tasks 会列出项目中所有 task。这份报告显示项目中所有的默认 task 以及每个 task 的描述。默认情况下,这只会显示那些被分组的 task.你可以通过为 task 设置group 属性和 description 来把这些信息展示到报告中
+
+//2. gradle tasks --all。可以用 --all 参数来收集更多 task 信息。这报告列出项目中所有被主 task 的分组的 task 以及 task 之间的依赖关系。

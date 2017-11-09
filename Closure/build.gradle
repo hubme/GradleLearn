@@ -23,7 +23,8 @@ singleParamClosure2("hai")
 
 //接收多个参数
 def mulParamsClosure = {
-	str, n -> println "$str --- $n"
+	//同 str, n -> println "$str --- $n"
+	String str, int n -> println "$str --- $n"
 }
 mulParamsClosure("VanceKing", 1024)
 

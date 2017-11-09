@@ -16,7 +16,8 @@ task dist(dependsOn: [compile, test]) << {
     println 'building the distribution'
 }
 
+description = 'The dependencie description'
+
 //1.执行 gradle dist test.每个任务只会执行一次。
 //2.剔除某个任务(-x) gradle dist -x test。
-//3.发生故障时继续构建
-//4.任务名称缩写，只需提供足够的可以唯一区分出该 task 的字符即可. gradle compileTest 同 gradle cT。
+//3.gradle projects 会为你列出选中项目的子项目列表
