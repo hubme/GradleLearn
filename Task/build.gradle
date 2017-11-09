@@ -1,3 +1,14 @@
+defaultTasks 'clean', 'run'//默认 task
+
+task clean << {
+    println 'Default Cleaning!'
+}
+
+task run << {
+    println 'Default Running!'
+}
+
+
 task printVersion {
     doFirst{
         println "all first task"
@@ -13,7 +24,7 @@ task EmptyTask {
 }
 
 task MyTask {
-	println "MyTask"
+	println "MyTaskAAA"
 
 	description = 'Build My Task'
     group = 'build'
@@ -28,3 +39,15 @@ chant()
 //1. gradle tasks 会列出项目中所有 task。这份报告显示项目中所有的默认 task 以及每个 task 的描述。默认情况下,这只会显示那些被分组的 task.你可以通过为 task 设置group 属性和 description 来把这些信息展示到报告中
 
 //2. gradle tasks --all。可以用 --all 参数来收集更多 task 信息。这报告列出项目中所有被主 task 的分组的 task 以及 task 之间的依赖关系。
+
+//3. gradle help --task someTask 可以获取到 task 的详细信息， 或者多项目构建中相同 task 名称的所有 task 的信息
+
+//4. 执行 gradle dependencies 会列出项目的依赖列表,所有依赖会根据任务区分,以树型结构展示出来。eg：gradlew -q dependencies app:dependencies --configuration compile
+
+//5. 查看特定依赖。 gradle dependencyInsight 可以查看指定的依赖情况。eg：gradle -q app:dependencyInsight --dependency groovy --configuration compile
+
+//6. 项目属性列表。gradle properties 可以获取项目所有属性列表。eg：gradle -q app:properties
+
+//7. Profiling a build。--profile 命令选项可以记录一些构建期间的信息并保存到 build/reports/profile 目录下并且以构建时间命名这些文件该报告列出总时间和在配置和 task 的执行 阶段的细节。并以时间大小倒序排列，并且记录了任务的执行情况如果采用了 buildSrc 构建,那么在 buildSrc/build 下同时也会给 buildSrc 生成一份日志记录。eg：gradle -q MyTask --profile
+
+//8. 执行。有时可能你只想知道某个 task 在一个 task 集中按顺序执行的结果,但并不想实际执行这些 task 。那么你可以用 -m 选项。例如 执行 gradle -m clean compile 将会看到所有的作为 clean 和 compile 一部分的 task 会被执行。这与 task 可以形成互补,让你知道哪些 task 可以用于执行。
