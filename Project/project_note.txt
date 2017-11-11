@@ -1,0 +1,14 @@
+1、在构建脚本中，你所调用的任何一个方法，如果在构建脚本中未定义，它将被委托给 Project 对象。
+在构建脚本中，你所访问的任何一个属性，如果在构建脚本里未定义，它也会被委托给 Project 对象。
+
+2、标准 project 属性
+名称		类型		默认值
+project		Project		The Project实例
+name		String		项目目录的名称
+path		String		项目的绝对路径
+description	String		项目的描述
+projectDir	File		包含生成脚本的目录
+buildDir	File		projectDir/build
+group		Object		未指定
+version		Object		未指定
+ant			AntBuilder	An AntBuilder实例
