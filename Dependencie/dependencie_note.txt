@@ -1,0 +1,33 @@
+1、dependency resolution （依赖性解析）
+2、通常，一个项目的依赖会包含自己的依赖。例如，Hibernate 的核心需要几个其他包在类路径中存在才能运行。所以，当 Gradle 运行你的项目的测试，它也需要找到这些依赖关系，使他们存在。我们称这些 transitive dependencies （过渡依赖）。
+
+3、
+build.gradle
+
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
+        testCompile group: 'junit', name: 'junit', version: '4.+'
+    }
+
+这个脚本说明了几个事。首先项目需要 Hibernate core 3.6.7.Final 版本来编译。其中隐含的意思是，Hibernate core 和 他的依赖在运行时是需要的。其次，需要 junit >= 4.0 版本在测试时需要编译。同时 告诉 Gradle 依赖在 Maven central 库 中找。
+
+4.
+compile
+编译项目的生产源所需的依赖。
+
+runtime
+生产类在运行时所需的依赖。默认情况下，还包括编译时的依赖。
+
+testCompile
+编译项目的测试源所需的依赖。默认情况下，还包括产品编译类和编译时的依赖。
+
+testRuntime
+运行测试所需的依赖。默认情况下，还包括 编译，运行时和测试编译的依赖。
+
+各种插件添加进一步的标准配置。您也可以定义自己的自定义配置，使用你的建构建。
