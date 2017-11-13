@@ -1,3 +1,5 @@
+// https://docs.gradle.org/current/dsl/org.gradle.api.Task.html
+
 defaultTasks 'clean', 'run'//默认 task
 
 task clean << {
@@ -5,11 +7,15 @@ task clean << {
 }
 
 task("clean2") << {
-    println "another clean task"
+    println tasks.getByPath('clean').path
+    println tasks.getByPath(':clean').path
 }
 
 tasks.create(name: "clean3") << {
-    println "the third clean task"
+    println "The task name of clean3 is " + clean3.name
+    println "The task name of clean3 is " + project.clean3.name
+    println "The task name of clean3 is " + tasks.clean3.name
+    println "The task name of clean3 is " + tasks["clean3"].name
 }
 
 task run << {
@@ -71,3 +77,50 @@ task compile(dependsOn: 'resources') << {
         println 'The class directory exists. I can operate'
     }
 }
+
+//10. 给任务添加依赖
+/*project('projectA') {
+    task taskX(dependsOn: ':projectB:taskY') << {
+        println 'taskX'
+    }
+}
+
+project('projectB') {
+    task taskY << {
+        println 'taskY'
+    }
+}*/
+
+task taskA << {
+    println 'taskA'
+}
+
+task taskB << {
+    println 'taskB'
+}
+
+taskA.dependsOn taskB
+
+//
+task taskX << {
+    println 'taskX'
+}
+
+taskX.dependsOn {
+    tasks.findAll { task -> task.name.startsWith('lib') }
+}
+
+task lib1 << {
+    println 'lib1'
+}
+
+task lib2 << {
+    println 'lib2'
+}
+
+task notALib << {
+    println 'notALib'
+}
+
+//11. 任务排序
+clean.mustRunAfter clean2 //gradle -q taskY taskX
