@@ -124,3 +124,9 @@ task notALib << {
 
 //11. 任务排序
 clean.mustRunAfter clean2 //gradle -q taskY taskX
+
+//12. 启用和禁用任务
+task disableMe << {
+    println 'This should not be printed if the task is disabled.'
+}
+disableMe.enabled = false
