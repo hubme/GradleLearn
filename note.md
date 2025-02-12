@@ -1,0 +1,5 @@
+1. 任务名称缩写，只需提供足够的可以唯一区分出该 task 的字符即可。如 gradle compileTest 同 gradle cT。
+2. 执行特定的构建 gradle -q -b ..\Closure\build.gradle
+3. gradle projects 列出选中项目的子项目列表
+4. Gradle 2 User Guide 中文翻译《Gradle 2 用户指南》。https://github.com/waylau/Gradle-2-User-Guide
+5. 使用 Gradle 图形化用户界面: gradle --gui

@@ -1,4 +1,4 @@
-configurations.runtime.each { File f -> println f }
+// configurations.runtime.each { File f -> println f }
 
 // Using a getter method
     println project.buildDir

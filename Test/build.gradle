@@ -1,0 +1,57 @@
+println("settings...")
+
+// Setting 脚本执行前调用
+gradle.beforeSettings {
+    // 在这里写明显无用
+    println("gradle.beforeSettings...")
+}
+
+// Setting 项目编译前调用
+gradle.beforeProject {
+    // 在这里写明显无用
+    println("gradle.beforeProject...")
+}
+
+// Setting 脚本执行完成后调用
+gradle.settingsEvaluated {
+    println("gradle.settingsEvaluated...")
+}
+
+// Setting 项目编译完成后调用
+gradle.afterProject {
+    println("gradle.afterProject...")
+}
+
+// 所有项目脚本执行完后调用
+gradle.projectsEvaluated {
+    println("gradle.projectsEvaluated...")
+}
+
+// 开始进入编译阶段时调用
+gradle.projectsLoaded {
+    println("gradle.projectsLoaded...")
+}
+
+// 构建结束时调用
+gradle.buildFinished {
+    println("gradle.buildFinished...")
+}
+
+// 对所有项目脚本进行设置
+gradle.allprojects(new Action<Project>() {
+    @Override
+    void execute(Project project) {
+        // 在这里设置 beforeEvaluate 就能能作用了
+        project.beforeEvaluate {
+            println("gradle.allprojects.beforeEvaluate...")
+        }
+        project.afterEvaluate {
+            println("gradle.allprojects.afterEvaluate...")
+        }
+    }
+})
+
+// 编译阶段 Task 流程图计算出来后调用
+gradle.taskGraph.whenReady {
+    println("gradle.taskGraph.whenReady...")
+}

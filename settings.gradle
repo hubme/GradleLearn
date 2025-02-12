@@ -1,0 +1,7 @@
+// include ':Closure'
+// include ':Dependencie'
+// include ':GroovyJDK'
+// include ':Project'
+include ':Property'
+// include ':Task'
+// include ':Test'

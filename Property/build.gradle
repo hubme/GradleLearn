@@ -1,11 +1,12 @@
 //Gradle在默认情况下已经为Project定义了很多Property
 task showDefautProperty {
-	println "project---"+project			//Project本身
-	println "name---"+project.name			//Project的名字
-	println "path---"+project.path			//Project的绝对路径
-	println "description---"+project.description	//Project的描述信息
-	println "buildDir---"+project.buildDir			//Project构建结果存放目录
-	println "version---"+project.version			//Project的版本号
+	
+	println("project: ${project}")					//Project本身
+	println("name: ${project.name}")				//Project的名字
+	println("path: ${project.path}")				//Project的绝对路径
+	println("description: ${project.description}")	//Project的描述信息
+	println("buildDir: ${project.buildDir}")		//Project构建结果存放目录
+	println("version: ${project.version}")			//Project的版本号
 }
 
 //扩展属性
@@ -15,6 +16,28 @@ ext {
 }
 
 task showCustomProperty {
-	println "custom property: $customProperty1"
-	println "second custom property: $customProperty2"
+	println("custom property1: $customProperty1")
+	println("custom property2: $customProperty2")
 }
+
+//属性赋值方式
+project.ext.myProp = 'myValue'
+
+// 闭包方式
+// 扩展属性，自定义propertise，会挂载到project上
+ext {
+    someOtherProp = 123
+}
+
+// 使用时可以省略命名空间
+assert myProp == 'myValue'
+println("project.ext.myProp: ${myProp}")
+println("project.someOtherProp: ${project.someOtherProp}")
+ext.someOtherProp = 567
+
+println("exampleProp value in gradle.properties: ${exampleProp}")
+println("someOtherProp value in gradle.properties: ${someOtherProp}")
+
+println("name value from command: ${project.ext.name}")
+println("age value from command: ${age}")
+println("address value from command: ${System.properties['address']}")

@@ -1,18 +1,18 @@
 //http://wiki.jikexueyuan.com/project/gradle-2-user-guide/using-the-gradle-command-line.html
 
-task compile << {
+task compile {
     println 'compiling source'
 }
 
-task compileTest(dependsOn: compile) << {
+task compileTest(dependsOn: compile) {
     println 'compiling unit tests'
 }
 
-task test(dependsOn: [compile, compileTest]) << {
+task test(dependsOn: [compile, compileTest]) {
     println 'running unit tests'
 }
 
-task dist(dependsOn: [compile, test]) << {
+task dist(dependsOn: [compile, test]) {
     println 'building the distribution'
 }
 
